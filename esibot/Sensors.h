@@ -1,0 +1,49 @@
+#ifndef SENSORS
+#define SENSORS
+
+#include <Arduino.h>
+
+//CNY LEFT FRONT
+#define PIN_SENSOR_FRONTAL_LEFT_CNY A2
+//CNY RIGHT FRONT
+#define PIN_SENSOR_FRONTAL_RIGHT_CNY A5
+//CNY BACK LEFT
+#define PIN_SENSOR_BACK_LEFT_CNY A1
+//CNY BACK RIGHT
+#define PIN_SENSOR_BACK_RIGHT_CNY A0
+//CNY LEFT CENTER FRONT
+#define PIN_SENSOR_FRONTAL_CENTER_LEFT_CNY A3
+//CNY RIGHT CENTER FRONT
+#define PIN_SENSOR_FRONTAL_CENTER_RIGHT_CNY A4
+
+//PIN CENTER ULTRASONIC
+#define PIN_SENSOR_FRONTAL_ULTRASOUND 2
+//PIN LEFT ULTRASONIC
+#define PIN_SENSOR_RIGHT_ULTRASOUND 8
+//PIN RIGHT ULTRASONIC
+#define PIN_SENSOR_LEFT_ULTRASOUND 7
+
+//BLACK THRESHOLD VALUE > 500
+#define CNY_VALUE_UMBRAL_BLACK 500
+
+//SAFE TURNING DISTANCE
+#define DIST_SEGURO 20
+//COLLISION DISTANCE
+#define DIST_COLISION 10
+
+class Sensors
+{
+public:
+	Sensors();
+	long GetUltraSoundValue(int port);
+	bool isBlack(int port);
+	bool obstacleOpposite();
+
+	int valueCnyLeftFrontal;
+	int valueCnyRightFrontal;
+
+private:
+	long TimeMsToDistanceCm(long ms);
+};
+
+#endif
